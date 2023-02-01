@@ -1,4 +1,5 @@
 import streamlit as st
+from deta import Deta
 from PIL import Image
 from datetime import date, timedelta
 import time
@@ -6,9 +7,10 @@ import json
 import os
 import pandas as pd
 import numpy as np
+deta = Deta(st.secrets["deta_key"])
+db = deta.Base("first")
 
 money=1000
-menu=' '
 st.set_page_config(
 page_title="Мировое господство",
 page_icon="🥭",
@@ -82,9 +84,10 @@ if menu=='Улучшения':
 
     if st.button('Отправить данные'):
         if money>=0:
-            data_msk = {'upgrade': masiv_up, 'shit': masiv_shit, 'roket': number, 'money': money}
-            with open('fell', 'w', encoding='utf-8') as f:
-                f.write(json.dumps(data_msk, ensure_ascii=False, indent=4))
+            #os.system('python MG/123.py')
+            db.put({"up": str(masiv_up),"shit":str(masiv_shit), "roket": number,"money":money})
+            db_content = db.fetch().items
+            st.write(db_content)
             with st.spinner('Wait for it...'):
                 time.sleep(1)
             st.success('Данные обновлены!')
