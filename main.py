@@ -1,4 +1,5 @@
 import streamlit as st
+import deta
 from deta import Deta
 from PIL import Image
 from datetime import date, timedelta
