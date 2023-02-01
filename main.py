@@ -83,7 +83,7 @@ if menu=='Улучшения':
     if st.button('Отправить данные'):
         if money>=0:
             data_msk = {'upgrade': masiv_up, 'shit': masiv_shit, 'roket': number, 'money': money}
-            with open('MG/fell', 'w', encoding='utf-8') as f:
+            with open('fell', 'w', encoding='utf-8') as f:
                 f.write(json.dumps(data_msk, ensure_ascii=False, indent=4))
             with st.spinner('Wait for it...'):
                 time.sleep(1)
@@ -99,11 +99,11 @@ if menu=='Стартовая страница':
     st.write('🏠  Шанхай | ⚙️ - 50 | 🌳 - 54 %')
     st.write('🏠  Гуанчжоу | ⚙️ - 50 | 🌳 - 54 %')
     st.write('🏠  Гонконг | ⚙️ - 40 | 🌳 - 36 %')
-    Graph1=('MG/Graph1.png')
+    Graph1=('Graph1.png')
     st.image(Graph1)
-    Graph2 = ('MG/Graph2.png')
+    Graph2 = ('Graph2.png')
     st.image(Graph2)
-    Graph3 = ('MG/Graph3.png')
+    Graph3 = ('Graph3.png')
     st.image(Graph3)
-    Graph4 = ('MG/Graph4.png')
+    Graph4 = ('Graph4.png')
     st.image(Graph4)
