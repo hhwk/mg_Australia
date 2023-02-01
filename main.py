@@ -1,7 +1,7 @@
 import streamlit as st
 from deta import Deta
 from PIL import Image
-from datetime import date, timedelta
+import datetime
 import time
 import json
 import os
