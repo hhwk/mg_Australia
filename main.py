@@ -81,6 +81,7 @@ if menu=='Улучшения':
 
     if st.button('Отправить данные'):
         if money>=0:
+            os.system('python 1423.py')
             st.download_button('Download some text', 'wdfswgwgewrgergergetfgdsfsdf')
             st.success('Данные обновлены!')
         else:
