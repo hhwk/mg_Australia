@@ -82,13 +82,11 @@ if menu=='Улучшения':
 
     if st.button('Отправить данные'):
         if money>=0:
+            data_msk = {'upgrade': masiv_up, 'shit': masiv_shit, 'roket': number, 'money': money}
+            with open('MG/fell', 'w', encoding='utf-8') as f:
+                f.write(json.dumps(data_msk, ensure_ascii=False, indent=4))
             with st.spinner('Wait for it...'):
-                with open("new.txt", "w") as file:
-                    file.write('Улучшения '+' Пекин: '+str(masiv_up[0])+' Шанхай: '+str(masiv_up[1])+' Гуанчжоу: '+str(masiv_up[2])+' Гонконг: '+str(masiv_up[3]))
-                    file.write('\n'+'Щиты '+' Пекин: '+str(masiv_shit1[0])+' Шанхай: '+str(masiv_shit1[1])+' Гуанчжоу: '+str(masiv_shit1[2])+' Гонконг: '+str(masiv_shit1[3]))
-                    file.write('\n'+'Производство ракет '+str(number))
-                    file.write('\n'+'Деньги '+str(money))
-                time.sleep(3)
+                time.sleep(1)
             st.success('Данные обновлены!')
         else:
             st.error('Деньги ушли в -')
@@ -101,11 +99,11 @@ if menu=='Стартовая страница':
     st.write('🏠  Шанхай | ⚙️ - 50 | 🌳 - 54 %')
     st.write('🏠  Гуанчжоу | ⚙️ - 50 | 🌳 - 54 %')
     st.write('🏠  Гонконг | ⚙️ - 40 | 🌳 - 36 %')
-    Graph1=('Graph1.png')
+    Graph1=('MG/Graph1.png')
     st.image(Graph1)
-    Graph2 = ('Graph2.png')
+    Graph2 = ('MG/Graph2.png')
     st.image(Graph2)
-    Graph3 = ('Graph3.png')
+    Graph3 = ('MG/Graph3.png')
     st.image(Graph3)
-    Graph4 = ('Graph4.png')
+    Graph4 = ('MG/Graph4.png')
     st.image(Graph4)
