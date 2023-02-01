@@ -19,12 +19,9 @@ menu_items={
          'Report a bug': "https://www.google.com/",
          'About': "# Автор MangoVirus"
      })
-if menu==' ':
-    menu='Стартовая страница'
-if st.sidebar.button('Стартовая страница'):
-    menu='Стартовая страница'
-if st.sidebar.button('Улучшения'):
-    menu='Улучшения'
+menu = st.sidebar.selectbox(
+     'Меню',
+     ('Стартовая страница','Улучшения'))
 masiv_up=[0,0,0,0]
 masiv_shit=[' ',' ',' ',' ']
 masiv_shit1=[0,0,0,0]
