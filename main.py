@@ -13,6 +13,9 @@ Global = deta.Base("Global")
 db = deta.Base('Kitay')
 Attak_Kitay=deta.Base('Attak_Kitay')
 Graph=deta.Base('Photo_Url')
+request=deta.Base('request')
+request_money=deta.Base('request_money')
+
 
 city=Global.get('Kitay')
 money=city['money']-((city['sunks_of_you']*50)+(city['sunks_for_you']*100))
@@ -24,14 +27,12 @@ page_icon="🥭",
 layout="wide",
 initial_sidebar_state="collapsed", #expanded/collapsed
 menu_items={
-         'Get Help': 'https://www.google.com/',
-         'Report a bug': "https://www.google.com/",
+         'Get Help': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+         'Report a bug': "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
          'About': "# Автор MangoVirus"
      })
-
-menu = st.sidebar.selectbox(
-     'Меню',
-     ('Стартовая страница','Улучшения','Ракета'))
+st.sidebar.image('https://cdn.discordapp.com/attachments/890188503047077928/1070451124869533758/066443762463369c.png',width=64)
+menu = st.sidebar.selectbox('Меню',('Стартовая страница','Улучшения','Ракета','Посещения','Гуманитарная помощь','Авторы'))
 
 
 masiv_up=[0,0,0,0]
@@ -42,7 +43,26 @@ attak2=[]
 attak3=[]
 attak4=[]
 
+if menu=='Авторы':
+    '''# Над данным проектом работали'''
+    st.subheader('MangoVirus')
+    '''Разработчик сайта, создатель DataBase.'''
+    st.subheader('Турба')
+    '''Проектный руководитель, дизайнер.'''
+    st.subheader('Если вы хотите поддержать нас и в будущем видеть более маштабные нововедения вы можете скинуть нам пару тугриков по номеру телефона 8(977)382-41-17')
+if menu=='Гуманитарная помощь':
+    st.write('Деньги:',money)
+    visit_money = st.selectbox('Кому вы хотите перевести деньги?',('Япония', 'Северная-Коррея', 'Пакистан', 'Афганистан', 'Сирия'))
+    how_money = st.number_input('Сумма перевода?', 0)
+    if st.button('Перевести'):
+        request_money.put({'who':'Kitay','come':visit_money,'price':how_money})
+        st.success('Запрос на перевод отправлен.(Деньги придут в течение 5 минут)')
 
+if menu=='Посещения':
+    visit = st.selectbox('Какую старану вы хотите посетить?', ('Япония', 'Северная-Коррея', 'Пакистан', 'Афганистан','Сирия'))
+    if st.button('Отправить запрос'):
+        request.put({'who':'Kitay','come':visit})
+        st.success('Запрос на посещение отправлен')
 if menu=='Ракета':
     st.write('Количество ваших ракет:',city['roket'])
     country = st.multiselect('Какие страны атакуем?',['Япония', 'Северная-Коррея', 'Пакистан', 'Афганистан','Сирия'])
@@ -116,7 +136,7 @@ if menu=='Улучшения':
         masiv_shit[3]+='🛡️'
         money -= 400
 
-    number = st.number_input('Сколько ракет делаем?')
+    number = st.number_input('Сколько ракет делаем?',0)
     st.write('Вы получите в следующие количество ракет', number)
     money -= 500 * number
 
@@ -144,8 +164,7 @@ if menu=='Улучшения':
             st.error('Вы потратили больше денег чем у вас есть...')
 
 if menu=='Стартовая страница':
-    '''# Привет!
-    Вы играете за Китай'''
+    st.title('Вы играете за Китай')
 
     st.write('Деньги:', money)
     st.write('Ракеты:', city['roket'])
@@ -156,7 +175,10 @@ if menu=='Стартовая страница':
     col2.metric('🏠' + city['shit2'] + 'Шанхай','⚙️' + str(50 + 10 * city['up2']) + '%' + ' 🌳 ' + str(54 + 10 * city['up2']- (city['debaf2']*20)) + '%')
     col3.metric('🏠' + city['shit3'] + 'Гуанчжоу','⚙️' + str(50 + 10 * city['up3']) + '%' + ' 🌳 ' + str(54 + 10 * city['up3']- (city['debaf3']*20)) + '%')
     col4.metric('🏠' + city['shit4'] + 'Гонконг','⚙️' + str(40 + 10 * city['up4']) + '%' + ' 🌳 ' + str(36 + 10 * city['up4']- (city['debaf4']*20)) + '%')
-    st.image('https://cdn.discordapp.com/attachments/1070077630197534780/1070367870632071238/Graph1.png')
-    st.image('https://cdn.discordapp.com/attachments/1070077630197534780/1070367870845988934/Graph2.png')
-    st.image('https://cdn.discordapp.com/attachments/1070077630197534780/1070367870380425226/Graph4.png')
-    st.image('https://cdn.discordapp.com/attachments/1070077630197534780/1070367870158123078/Graph3.png')
+    photo=deta.Base('Photo_Url')
+    pp=photo.get('bb6a5172diyj')
+    st.image(pp['Graph1'])
+    st.image(pp['Graph2'])
+    st.image(pp['Graph3'])
+    st.image(pp['Graph4'])
+    st.caption('Автор MangoVirus')
