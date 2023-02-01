@@ -2,12 +2,13 @@ import streamlit as st
 from PIL import Image
 from datetime import date, timedelta
 import time
-import streamlit.components.v1 as components
 import json
 import os
 import pandas as pd
 import numpy as np
+
 money=1000
+menu=' '
 st.set_page_config(
 page_title="Мировое господство",
 page_icon="🥭",
@@ -18,9 +19,12 @@ menu_items={
          'Report a bug': "https://www.google.com/",
          'About': "# Автор MangoVirus"
      })
-menu = st.sidebar.selectbox(
-     'Меню',
-     ('Стартовая страница','Улучшения'))
+if menu==' ':
+    menu='Стартовая страница'
+if st.sidebar.button('Стартовая страница'):
+    menu='Стартовая страница'
+if st.sidebar.button('Улучшения'):
+    menu='Улучшения'
 masiv_up=[0,0,0,0]
 masiv_shit=[' ',' ',' ',' ']
 masiv_shit1=[0,0,0,0]
@@ -81,8 +85,13 @@ if menu=='Улучшения':
 
     if st.button('Отправить данные'):
         if money>=0:
-            os.system('python 1423.py')
-            st.download_button('Download some text', 'wdfswgwgewrgergergetfgdsfsdf')
+            with st.spinner('Wait for it...'):
+                with open("new.txt", "w") as file:
+                    file.write('Улучшения '+' Пекин: '+str(masiv_up[0])+' Шанхай: '+str(masiv_up[1])+' Гуанчжоу: '+str(masiv_up[2])+' Гонконг: '+str(masiv_up[3]))
+                    file.write('\n'+'Щиты '+' Пекин: '+str(masiv_shit1[0])+' Шанхай: '+str(masiv_shit1[1])+' Гуанчжоу: '+str(masiv_shit1[2])+' Гонконг: '+str(masiv_shit1[3]))
+                    file.write('\n'+'Производство ракет '+str(number))
+                    file.write('\n'+'Деньги '+str(money))
+                time.sleep(3)
             st.success('Данные обновлены!')
         else:
             st.error('Деньги ушли в -')
