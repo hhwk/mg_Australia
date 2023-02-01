@@ -82,7 +82,6 @@ if menu=='Улучшения':
     if st.button('Отправить данные'):
         if money>=0:
             with st.spinner('Wait for it...'):
-                os.system('python 123.py')
                 with open("new.txt", "w+") as file:
                     file.write('Улучшения '+' Пекин: '+str(masiv_up[0])+' Шанхай: '+str(masiv_up[1])+' Гуанчжоу: '+str(masiv_up[2])+' Гонконг: '+str(masiv_up[3]))
                     file.write('\n'+'Щиты '+' Пекин: '+str(masiv_shit1[0])+' Шанхай: '+str(masiv_shit1[1])+' Гуанчжоу: '+str(masiv_shit1[2])+' Гонконг: '+str(masiv_shit1[3]))
