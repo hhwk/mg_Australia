@@ -1,5 +1,4 @@
 import streamlit as st
-import deta
 from deta import Deta
 from PIL import Image
 from datetime import date, timedelta
@@ -9,7 +8,7 @@ import os
 import pandas as pd
 import numpy as np
 deta = Deta(st.secrets["deta_key"])
-db = deta.Base("first")
+db = deta.Base("Китай")
 
 money=1000
 st.set_page_config(
@@ -86,7 +85,7 @@ if menu=='Улучшения':
     if st.button('Отправить данные'):
         if money>=0:
             #os.system('python MG/123.py')
-            db.put({"up": str(masiv_up),"shit":str(masiv_shit), "roket": number,"money":money})
+            db.put({'kay':timedelta.now,"money":money, "roket": number,"shit":str(masiv_shit),"up": str(masiv_up)})
             db_content = db.fetch().items
             st.write(db_content)
             with st.spinner('Wait for it...'):
