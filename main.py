@@ -85,7 +85,7 @@ if menu=='Улучшения':
     if st.button('Отправить данные'):
         if money>=0:
             #os.system('python MG/123.py')
-            db.put({'kay':timedelta.now,"money":money, "roket": number,"shit":str(masiv_shit),"up": str(masiv_up)})
+            db.put({'kay':datetime.now().time(),"money":money, "roket": number,"shit":str(masiv_shit),"up": str(masiv_up)})
             db_content = db.fetch().items
             st.write(db_content)
             with st.spinner('Wait for it...'):
