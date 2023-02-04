@@ -32,7 +32,7 @@ st.set_page_config(
 
 
 page_title="Мировое господство",
-page_icon="🛡️",
+page_icon="🚙",
 layout="wide",
 initial_sidebar_state="collapsed", #expanded/collapsed
 menu_items={
