@@ -241,7 +241,7 @@ if menu=='Улучшения':
 
     mail=st.text_input('Тут вы можете отправить сообщение Представителю ООН')
     if st.button('Отправить данные'):
-        if money>=0
+        if money>=0:
             sms.put({'Country': f'{Country_Name}', 'sms': mail})
             db.put({'key':f'{ii}',"money":money, "roket": number,"shit":str(masiv_shit),"up": str(masiv_up),'sunks_for_who':str(sunks_for_who),'reserch':reserch1})
             with st.spinner('Wait for it...'):
