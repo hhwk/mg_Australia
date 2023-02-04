@@ -69,7 +69,7 @@ if menu=='Авторы':
 
 if menu=='Гуманитарная помощь':
     st.write('Деньги:',money)
-    visit_money = st.selectbox('Кому вы хотите перевести деньги?',('Мексика', 'Канада', 'Филипинские острова', 'Швеция', 'Аргентина'))
+    visit_money = st.selectbox('Кому вы хотите перевести деньги?',('Мексике', 'Канаде', 'Филипинским островам', 'Швеции', 'Аргентине'))
     how_money = st.number_input('Сумма перевода?', 200)
     for ii in range(0, 20):
         if request_money.get(f'{ii}') == None:
@@ -92,7 +92,7 @@ if menu=='Посещения':
 if menu=='Запуск ракет':
     final_roket = -1999
     if city['reserch']=='0':
-        st.error('Дружек ты еще не изучил ракеты')
+        st.error('Дружок ты еще не изучил ракеты')
     else:
         st.write('Количество ваших ракет:',city['roket'])
         country = st.multiselect('Какие страны атакуем?',['Мексика', 'Канада', 'Филипинские острова', 'Швеция', 'Аргентина'])
@@ -241,9 +241,8 @@ if menu=='Улучшения':
 
     mail=st.text_input('Тут вы можете отправить сообщение Представителю ООН')
     if st.button('Отправить данные'):
-        if money>=0:
-            if mail!='':
-                sms.put({'Country': f'{Country_Name}', 'sms': mail})
+        if money>=0
+            sms.put({'Country': f'{Country_Name}', 'sms': mail})
             db.put({'key':f'{ii}',"money":money, "roket": number,"shit":str(masiv_shit),"up": str(masiv_up),'sunks_for_who':str(sunks_for_who),'reserch':reserch1})
             with st.spinner('Wait for it...'):
                 time.sleep(1)
